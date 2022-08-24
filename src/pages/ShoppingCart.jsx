@@ -15,12 +15,18 @@ const ShoppingCart = () => {
         <div>No Item Found!</div>
       ) : (
         <div>
-          {shoppingCart.map((item) => {
+          {shoppingCart.map((product) => {
+            const { item, amount } = product;
             return (
               <div key={item.id}>
                 <img src={item.image} alt={item.title} width={100}></img>
                 <h3>{item.title}</h3>
                 <p>{item.price}</p>
+                <div>
+                  <button>+</button>
+                  <p>{amount}</p>
+                  <button>-</button>
+                </div>
                 <button onClick={() => handleItemRemove(item.id)}>
                   Remove Item
                 </button>

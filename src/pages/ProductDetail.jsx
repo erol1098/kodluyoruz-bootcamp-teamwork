@@ -24,7 +24,10 @@ const ProductDetail = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const handleAddCart = () => {
-    setShoppingCart((prevShoppingCart) => [...prevShoppingCart, data]);
+    setShoppingCart((prevShoppingCart) => [
+      ...prevShoppingCart,
+      { item: data, amount: 0 },
+    ]);
   };
   return (
     <div>

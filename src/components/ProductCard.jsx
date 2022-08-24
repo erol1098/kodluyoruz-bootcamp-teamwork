@@ -6,8 +6,21 @@ const ProductCard = ({ item }) => {
   const { id, title, image, price } = item;
   const navigate = useNavigate();
   const { shoppingCart, setShoppingCart } = useContext(ShoppingContext);
+
   const handleAddCart = () => {
-    setShoppingCart([...shoppingCart, item]);
+    if (shoppingCart.every((product) => product.item.id !== id)) {
+      setShoppingCart((prevCart) => [...prevCart, { item, amount: 1 }]);
+    } else {
+      setShoppingCart(
+        shoppingCart.map((product) => {
+          console.log(product);
+          if (product.item.id === id) {
+            product.amount = product.amount + 1;
+            return product;
+          } else return product;
+        })
+      );
+    }
   };
   return (
     <li>
