@@ -1,25 +1,39 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios"; //* Products
-import ProductCard from "../components/ProductCard";
-import { StyledCardContainer, StyledContainer } from "../components/styled";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import ProductCard from '../components/ProductCard';
+import { StyledCardContainer, StyledContainer } from '../components/styled';
 const Home = () => {
-  const [data, setData] = useState([]);
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(false);
   const getData = async () => {
     try {
-      const res = await axios.get("https://fakestoreapi.com/products");
-      setData(res.data);
-    } catch (error) {}
+      setLoading(true);
+      const { data } = await axios.get('https://fakestoreapi.com/products');
+      setProducts(data);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
     getData();
   }, []);
+  console.log('first', loading);
+
   return (
     <StyledContainer>
       <StyledCardContainer>
-        {data.map((item) => (
-          <ProductCard key={item.id} item={item} />
-        ))}
+        {!loading ? (
+          <>
+            {products?.map((item) => (
+              <ProductCard key={item.id} item={item} />
+            ))}
+          </>
+        ) : (
+          <div className='loading'>Loading...</div>
+        )}
       </StyledCardContainer>
     </StyledContainer>
   );

@@ -2,9 +2,24 @@ import styled from 'styled-components';
 
 export const StyledContainer = styled.main`
   width: 100%;
-  padding: 0 2rem;
+  padding: 1rem 2rem;
   display: flex;
   justify-content: center;
+  background: linear-gradient(to bottom, #2980b9, #6dd5fa, #ffffff);
+`;
+
+export const StyledHeader = styled.header`
+  padding: 1rem;
+  background: ${(props) => props.backColor};
+  color: ${(props) => props.color};
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  & > nav {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+  }
 `;
 
 export const StyledCardContainer = styled.ul`
@@ -15,6 +30,15 @@ export const StyledCardContainer = styled.ul`
   justify-content: center;
   align-items: flex-start;
   gap: 1rem;
+
+  & > .loading {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
 `;
 
 export const StyledCard = styled.li`
@@ -28,6 +52,7 @@ export const StyledCard = styled.li`
   justify-content: center;
   border: none;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  background: linear-gradient(to bottom, #ffefba, #ffffff);
 
   & > .img-wrapper {
     width: 13rem;
@@ -35,9 +60,12 @@ export const StyledCard = styled.li`
     display: flex;
     justify-content: center;
     align-items: center;
-    /* border: 1px solid red; */
     box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
       rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    background-color: white;
+    & > img {
+      max-height: 10rem;
+    }
   }
 
   & > h4 {
@@ -46,27 +74,23 @@ export const StyledCard = styled.li`
     word-wrap: wrap;
     word-break: break-word;
     overflow: auto;
-    /* border: 1px solid red; */
   }
 
   & > p {
-    /* border: 1px solid red; */
     font-weight: bold;
   }
 
   & > .btn-wrapper {
     width: 100%;
-    height: 3rem;
     display: flex;
     justify-content: space-around;
-    gap: 1rem;
-    /* border: 1px solid red; */
+    margin-top: 1rem;
   }
 `;
 
 export const StyledButton = styled.button`
   width: 7rem;
-  padding: 0 0.3rem;
+  padding: 0.7rem 0.3rem;
   font-family: 'Roboto', sans-serif;
   font-size: 1.1rem;
   border: none;

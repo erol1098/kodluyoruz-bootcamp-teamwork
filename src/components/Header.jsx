@@ -1,23 +1,24 @@
-import React, { useContext } from "react";
-import { useNavigate } from "react-router-dom";
-import ShoppingContext from "../context/shopping-context";
+import React, { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import ShoppingContext from '../context/shopping-context';
+import { StyledButton, StyledHeader } from './styled';
 
 const Header = (props) => {
   // const { query, setQuery } = props;
   const navigate = useNavigate();
   const { shoppingCart } = useContext(ShoppingContext);
   return (
-    <nav>
-      <div></div>
-      <div>
-        <button onClick={() => navigate("/")}>Home</button>
-        <button onClick={() => navigate("/cart")}>
+    <StyledHeader backColor={'linear-gradient(to right, #74ebd5, #acb6e5)'}>
+      <div>Logo</div>
+      <nav>
+        <StyledButton onClick={() => navigate('/')}>Home</StyledButton>
+        <StyledButton onClick={() => navigate('/cart')}>
           Cart (
           {shoppingCart?.reduce((arr, product) => arr + product.amount, 0) || 0}
           )
-        </button>
-      </div>
-    </nav>
+        </StyledButton>
+      </nav>
+    </StyledHeader>
     // <form>
     //   <input
     //     type="search"
