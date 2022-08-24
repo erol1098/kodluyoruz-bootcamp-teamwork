@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const StyledContainer = styled.main`
   width: 100%;
@@ -35,6 +35,9 @@ export const StyledCard = styled.li`
     display: flex;
     justify-content: center;
     align-items: center;
+    /* border: 1px solid red; */
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
+      rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
   }
 
   & > h4 {
@@ -43,17 +46,32 @@ export const StyledCard = styled.li`
     word-wrap: wrap;
     word-break: break-word;
     overflow: auto;
+    /* border: 1px solid red; */
   }
 
   & > p {
-    height: 2rem;
+    /* border: 1px solid red; */
     font-weight: bold;
   }
 
   & > .btn-wrapper {
-    height: 2rem;
-
+    width: 100%;
+    height: 3rem;
     display: flex;
+    justify-content: space-around;
     gap: 1rem;
+    /* border: 1px solid red; */
   }
+`;
+
+export const StyledButton = styled.button`
+  width: 7rem;
+  padding: 0 0.3rem;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 0.2rem;
+  cursor: pointer;
+  background-color: ${(props) => props.backColor};
+  color: ${(props) => props.color};
 `;

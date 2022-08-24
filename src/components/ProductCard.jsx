@@ -1,7 +1,7 @@
-import React, { useContext } from "react";
-import { useNavigate } from "react-router-dom";
-import ShoppingContext from "../context/shopping-context";
-import { StyledCard } from "./styled";
+import React, { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import ShoppingContext from '../context/shopping-context';
+import { StyledButton, StyledCard } from './styled';
 
 const ProductCard = ({ item }) => {
   const { id, title, image, price } = item;
@@ -24,14 +24,26 @@ const ProductCard = ({ item }) => {
   };
   return (
     <StyledCard>
-      <div className="img-wrapper">
+      <div className='img-wrapper'>
         <img width={100} src={image} alt={title} />
       </div>
       <h4>{title}</h4>
       <p>{price} €</p>
-      <div className="btn-wrapper">
-        <button onClick={handleAddCart}>Add To Cart</button>
-        <button onClick={() => navigate(`${id}`)}>Detail</button>
+      <div className='btn-wrapper'>
+        <StyledButton
+          backColor={'green'}
+          color={'white'}
+          onClick={handleAddCart}
+        >
+          Add To Cart
+        </StyledButton>
+        <StyledButton
+          backColor={'blue'}
+          color={'white'}
+          onClick={() => navigate(`${id}`)}
+        >
+          Detail
+        </StyledButton>
       </div>
     </StyledCard>
   );
