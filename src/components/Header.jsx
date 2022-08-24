@@ -12,7 +12,9 @@ const Header = (props) => {
       <div>
         <button onClick={() => navigate("/")}>Home</button>
         <button onClick={() => navigate("/cart")}>
-          Cart ({shoppingCart.length})
+          Cart (
+          {shoppingCart?.reduce((arr, product) => arr + product.amount, 0) || 0}
+          )
         </button>
       </div>
     </nav>
