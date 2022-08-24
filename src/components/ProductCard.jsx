@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import ShoppingContext from "../context/shopping-context";
+import { StyledCard } from "./styled";
 
 const ProductCard = ({ item }) => {
   const { id, title, image, price } = item;
@@ -13,7 +14,6 @@ const ProductCard = ({ item }) => {
     } else {
       setShoppingCart(
         shoppingCart.map((product) => {
-          console.log(product);
           if (product.item.id === id) {
             product.amount = product.amount + 1;
             return product;
@@ -23,15 +23,17 @@ const ProductCard = ({ item }) => {
     }
   };
   return (
-    <li>
-      <img width={100} src={image} alt={title} />
-      <h3>{title}</h3>
-      <p>{price}</p>
-      <div>
+    <StyledCard>
+      <div className="img-wrapper">
+        <img width={100} src={image} alt={title} />
+      </div>
+      <h4>{title}</h4>
+      <p>{price} €</p>
+      <div className="btn-wrapper">
         <button onClick={handleAddCart}>Add To Cart</button>
         <button onClick={() => navigate(`${id}`)}>Detail</button>
       </div>
-    </li>
+    </StyledCard>
   );
 };
 

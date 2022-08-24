@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios"; //* Products
 import ProductCard from "../components/ProductCard";
+import { StyledCardContainer, StyledContainer } from "../components/styled";
 const Home = () => {
   const [data, setData] = useState([]);
   const getData = async () => {
@@ -14,11 +15,13 @@ const Home = () => {
     getData();
   }, []);
   return (
-    <ul>
-      {data.map((item) => (
-        <ProductCard key={item.id} item={item} />
-      ))}
-    </ul>
+    <StyledContainer>
+      <StyledCardContainer>
+        {data.map((item) => (
+          <ProductCard key={item.id} item={item} />
+        ))}
+      </StyledCardContainer>
+    </StyledContainer>
   );
 };
 

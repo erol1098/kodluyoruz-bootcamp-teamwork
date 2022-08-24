@@ -27,7 +27,6 @@ const ShoppingCart = () => {
       }
     }
   };
-  console.log("er", shoppingCart);
   return (
     <>
       {shoppingCart?.length === 0 ? (
