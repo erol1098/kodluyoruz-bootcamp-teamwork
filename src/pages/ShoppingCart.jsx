@@ -12,19 +12,22 @@ const ShoppingCart = () => {
 
   const handleSetAmount = (id, op) => {
     const temp = shoppingCart.find((product) => product.item.id === id);
+
     op === "+" && temp.amount++;
-    if (op === "-") {
-      temp.amount > 1 && temp.amount--;
-      temp.amount === 1 &&
-        setShoppingCart((prevShoppingCart) =>
-          prevShoppingCart.filter((product) => product.item.id !== id)
-        );
-    }
+    op === "-" && temp.amount > 0 && temp.amount--;
     setShoppingCart((prevShoppingCart) => [
       ...prevShoppingCart.filter((product) => product.item.id !== id),
       temp,
     ]);
+    if (op === "-") {
+      if (temp.amount === 0) {
+        setShoppingCart((prevShoppingCart) =>
+          prevShoppingCart.filter((product) => product.item.id !== id)
+        );
+      }
+    }
   };
+  console.log("er", shoppingCart);
   return (
     <>
       {shoppingCart?.length === 0 ? (
