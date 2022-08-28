@@ -99,3 +99,34 @@ export const StyledButton = styled.button`
   background-color: ${(props) => props.backColor};
   color: ${(props) => props.color};
 `;
+
+export const StyledCartItem = styled.section`
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  /* border: 1px solid red; */
+  width: 100%;
+  padding: 1rem 3rem;
+  & > .btn-wrapper {
+    width: 10rem;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1rem;
+    & > button {
+      width: 2rem;
+      height: 2rem;
+      border: none;
+      border-radius: 0.2rem;
+    }
+
+    & > p {
+      padding: 0;
+    }
+  }
+
+  & > button {
+    height: 2rem;
+    padding: 0.2rem 1rem;
+  }
+`;
